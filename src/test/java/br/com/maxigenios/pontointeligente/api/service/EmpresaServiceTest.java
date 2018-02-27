@@ -33,19 +33,23 @@ public class EmpresaServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		BDDMockito.given(this.empresaRepository.findByCnpj(Mockito.anyString())).willReturn(new Empresa());
-		BDDMockito.given(this.empresaRepository.save(Mockito.any(Empresa.class))).willReturn(new Empresa());
+		BDDMockito
+			.given(this.empresaRepository.findByCnpj(Mockito.anyString()))
+			.willReturn(new Empresa());
+		BDDMockito
+			.given(this.empresaRepository.save(Mockito.any(Empresa.class)))
+			.willReturn(new Empresa());
 	}
 
 	@Test
-	public void testBuscarEmpresaPorCnpj() {
+	public void testFindByCnpj() {
 		Optional<Empresa> empresa = this.empresaService.findByCnpj(CNPJ);
 
 		assertTrue(empresa.isPresent());
 	}
 	
 	@Test
-	public void testPersistirEmpresa() {
+	public void testSave() {
 		Empresa empresa = this.empresaService.save(new Empresa());
 
 		assertNotNull(empresa);

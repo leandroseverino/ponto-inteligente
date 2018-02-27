@@ -31,35 +31,43 @@ public class FuncionarioServiceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		BDDMockito.given(this.funcionarioRepository.save(Mockito.any(Funcionario.class))).willReturn(new Funcionario());
-		BDDMockito.given(this.funcionarioRepository.findOne(Mockito.anyLong())).willReturn(new Funcionario());
-		BDDMockito.given(this.funcionarioRepository.findByEmail(Mockito.anyString())).willReturn(new Funcionario());
-		BDDMockito.given(this.funcionarioRepository.findByCpf(Mockito.anyString())).willReturn(new Funcionario());
+		BDDMockito
+			.given(this.funcionarioRepository.save(Mockito.any(Funcionario.class)))
+			.willReturn(new Funcionario());
+		BDDMockito
+			.given(this.funcionarioRepository.findOne(Mockito.anyLong()))
+			.willReturn(new Funcionario());
+		BDDMockito
+			.given(this.funcionarioRepository.findByEmail(Mockito.anyString()))
+			.willReturn(new Funcionario());
+		BDDMockito
+			.given(this.funcionarioRepository.findByCpf(Mockito.anyString()))
+			.willReturn(new Funcionario());
 	}
 
 	@Test
-	public void testPersistirFuncionario() {
+	public void testSave() {
 		Funcionario funcionario = this.funcionarioService.save(new Funcionario());
 
 		assertNotNull(funcionario);
 	}
 
 	@Test
-	public void testBuscarFuncionarioPorId() {
+	public void testFindById() {
 		Optional<Funcionario> funcionario = this.funcionarioService.findById(1L);
 
 		assertTrue(funcionario.isPresent());
 	}
 
 	@Test
-	public void testBuscarFuncionarioPorEmail() {
+	public void testFindByEmail() {
 		Optional<Funcionario> funcionario = this.funcionarioService.findByEmail("email@email.com");
 
 		assertTrue(funcionario.isPresent());
 	}
 
 	@Test
-	public void testBuscarFuncionarioPorCpf() {
+	public void testFindByCpf() {
 		Optional<Funcionario> funcionario = this.funcionarioService.findByCpf("24291173474");
 
 		assertTrue(funcionario.isPresent());

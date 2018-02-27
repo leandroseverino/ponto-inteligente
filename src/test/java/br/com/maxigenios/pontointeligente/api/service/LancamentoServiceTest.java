@@ -36,28 +36,32 @@ public class LancamentoServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		BDDMockito
-				.given(this.lancamentoRepository.findByFuncionarioId(Mockito.anyLong(), Mockito.any(PageRequest.class)))
-				.willReturn(new PageImpl<Lancamento>(new ArrayList<Lancamento>()));
-		BDDMockito.given(this.lancamentoRepository.findOne(Mockito.anyLong())).willReturn(new Lancamento());
-		BDDMockito.given(this.lancamentoRepository.save(Mockito.any(Lancamento.class))).willReturn(new Lancamento());
+			.given(this.lancamentoRepository.findByFuncionarioId(Mockito.anyLong(), Mockito.any(PageRequest.class)))
+			.willReturn(new PageImpl<Lancamento>(new ArrayList<Lancamento>()));
+		BDDMockito
+			.given(this.lancamentoRepository.findOne(Mockito.anyLong()))
+			.willReturn(new Lancamento());
+		BDDMockito
+			.given(this.lancamentoRepository.save(Mockito.any(Lancamento.class)))
+			.willReturn(new Lancamento());
 	}
 
 	@Test
-	public void testBuscarLancamentoPorFuncionarioId() {
+	public void testFindByFuncionarioId() {
 		Page<Lancamento> lancamento = this.lancamentoService.findByFuncionarioId(1L, new PageRequest(0, 10));
 
 		assertNotNull(lancamento);
 	}
 
 	@Test
-	public void testBuscarLancamentoPorId() {
+	public void testFindById() {
 		Optional<Lancamento> lancamento = this.lancamentoService.findById(1L);
 
 		assertTrue(lancamento.isPresent());
 	}
 
 	@Test
-	public void testPersistirLancamento() {
+	public void testSave() {
 		Lancamento lancamento = this.lancamentoService.save(new Lancamento());
 
 		assertNotNull(lancamento);
