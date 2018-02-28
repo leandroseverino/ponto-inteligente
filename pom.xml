@@ -119,7 +119,13 @@
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache</artifactId>
 		</dependency>
-				
+		
+		<!-- PostgreSQL   -->		
+		<dependency>
+		  	<groupId>org.postgresql</groupId>
+		  	<artifactId>postgresql</artifactId>
+		  <version>9.4-1206-jdbc42</version>
+		</dependency>			
 	</dependencies>
 
 	<build>
