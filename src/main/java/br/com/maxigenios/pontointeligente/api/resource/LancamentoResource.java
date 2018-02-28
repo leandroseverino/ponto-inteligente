@@ -43,6 +43,7 @@ import br.com.maxigenios.pontointeligente.api.util.Response;
 public class LancamentoResource {
 
 	private static final Logger log = LoggerFactory.getLogger(LancamentoResource.class);
+	
 	private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@Autowired
@@ -51,7 +52,7 @@ public class LancamentoResource {
 	@Autowired
 	private FuncionarioService funcionarioService;
 	
-	@Value("${paginacao.qtd_por_pagina}")
+	@Value("${paginate.records_by_page}")
 	private int qtdPorPagina;
 
 	public LancamentoResource() {
